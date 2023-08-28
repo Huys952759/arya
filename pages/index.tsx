@@ -119,7 +119,7 @@ export default function Home() {
               height={486}
               alt="img"
             />
-              <div className="w-full text-white text-2xl mt-3">Ribbed Vest Top</div>
+            <div className="w-full text-white text-2xl mt-3">Ribbed Vest Top</div>
           </LifeStyleItemTW>
           <LifeStyleItemTW>
             <Image
@@ -128,7 +128,7 @@ export default function Home() {
               height={486}
               alt="img"
             />
-              <div className="w-full text-white text-2xl mt-3">Ribbed Vest Top</div>
+            <div className="w-full text-white text-2xl mt-3">Ribbed Vest Top</div>
           </LifeStyleItemTW>
           <LifeStyleItemTW>
             <Image
@@ -137,7 +137,7 @@ export default function Home() {
               height={486}
               alt="img"
             />
-              <div className="w-full text-white text-2xl mt-3">Ribbed Vest Top</div>
+            <div className="w-full text-white text-2xl mt-3">Ribbed Vest Top</div>
           </LifeStyleItemTW>
           <LifeStyleItemTW>
             <Image
@@ -146,10 +146,36 @@ export default function Home() {
               height={486}
               alt="img"
             />
-              <div className="w-full text-white text-2xl mt-3">Ribbed Vest Top</div>
+            <div className="w-full text-white text-2xl mt-3">Ribbed Vest Top</div>
           </LifeStyleItemTW>
         </LifeStyleListTW>
       </LifeStyleTW>
+      <ContactStyleTW>
+        <LogoTW>
+          <Image
+            className="w-full h-auto"
+            src='/logo.png'
+            width={140}
+            height={120}
+            alt="logo"
+          />
+        </LogoTW>
+        <ContactDetailTW>
+          <div className="whitespace-nowrap leading-[37px]">Contact Us:</div>
+          <div>sales@aryacashmere.com</div>
+        </ContactDetailTW>
+        <FollowUsTW>
+          <div className="whitespace-nowrap leading-[37px]">Follow us on</div>
+          <div className="flex w-[90px] justify-between">
+            <img src="/log.png" className="w-[24px] h-[24px]" />
+            <img src="/log.png" className="w-[24px] h-[24px]" />
+            <img src="/log.png" className="w-[24px] h-[24px]" />
+          </div>
+        </FollowUsTW>
+        <DescriptionTW>
+          <div>Sustainability + Transparency</div>
+        </DescriptionTW>
+      </ContactStyleTW>
     </PageContainer>
   )
 }
@@ -303,6 +329,42 @@ const LifeStyleTW = tw(LifeStyleSC)`
  px-12
  bg-black
  pt-20
+`
+const ContactStyleSC = styled('div')`
+  height: 200px
+`
+
+const ContactStyleTW = tw(ContactStyleSC)`
+  w-full
+  bg-white
+  flex
+  pt-[50px]
+  font-bold
+  text-[18px]
+  leading-[37px]
+`
+
+const LogoTW = tw.div`
+    h-[142px]
+    w-[120px]
+    ml-[100px]
+`;
+
+const ContactDetailTW = tw.div`
+  h-[62px]
+  w-[185px]
+  ml-[110px]
+`
+
+const FollowUsTW = tw.div`
+  h-[185px]
+  w-[62px]
+  ml-[110px]
+`
+
+const DescriptionTW = tw.div`
+  h-[25px]
+  ml-[120px]
 `
 
 const LifeSTyleNameTW = tw.div`
