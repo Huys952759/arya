@@ -167,9 +167,21 @@ export default function Home() {
         <FollowUsTW>
           <div className="whitespace-nowrap leading-[37px]">Follow us on</div>
           <div className="flex w-[90px] justify-between">
-            <img src="/log.png" className="w-[24px] h-[24px]" />
-            <img src="/log.png" className="w-[24px] h-[24px]" />
-            <img src="/log.png" className="w-[24px] h-[24px]" />
+            <Image
+              alt="brand"
+              width={24}
+              height={24}
+              src="/instagram.svg" className=" h-auto" />
+            <Image
+              alt="brand"
+              width={24}
+              height={24}
+              src="/facebook.svg" className=" h-auto" />
+            <Image
+              alt="brand"
+              width={24}
+              height={24}
+              src="/tiktok.svg" className="h-auto" />
           </div>
         </FollowUsTW>
         <DescriptionTW>
@@ -357,8 +369,8 @@ const ContactDetailTW = tw.div`
 `
 
 const FollowUsTW = tw.div`
-  h-[185px]
-  w-[62px]
+
+  w-[185px]
   ml-[110px]
 `
 
