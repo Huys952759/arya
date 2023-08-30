@@ -51,32 +51,35 @@ export default function Home({ IndexConfig }) {
             autoPlayInterval={3000}
           />
         </BannerTW>
-        <ReayToWearTW>
+        <ReayToWearTW className={isPhone ? 'text-[18px]' : 'text-[64px]'}>
           <ReadyNameTW>
-            <div>
+            <div className={isPhone ? 'font-bold pt-[20px] pl-[20px]' : 'font-bold pt-[67px] pl-[50px]'}>
               READY TO WEAR
             </div>
-            <ReadyImageContainerTW>
-              <div className="flex-1 mr-4">
-              <ReadyImage1TW>
+            <ReadyImageContainerTW className={isPhone ? '' : 'flex flex-row-reverse'}>
+              <ReadyImage1TW className={isPhone ? 'h-[386px]' : 'h-[900px] ml-[32px]'}>
                 <ReadyIconTW>
                   <JumpToIcon />
-                  <div className="mt-5">Womean's</div>
+                  <div className="mt-5">Women's</div>
                 </ReadyIconTW>
               </ReadyImage1TW>
-                <ReadyImage2TW>
+
+              <div className={isPhone ? 'flex' : 'flex-1'}>
+                <ReadyImage2TW className={isPhone ? 'w-[241px] h-[160px]' : ''}>
                   <ReadyIconTW>
                     <JumpToIcon />
-                    <div className="mt-5">Womean's</div>
+                    <div className="mt-5">Women's</div>
                   </ReadyIconTW>
                 </ReadyImage2TW>
-              </div>
-              <ReadyImage3TW>
+
+                <ReadyImage3TW className={isPhone ? 'w-[241px] h-[160px]' : ''}>
                   <ReadyIconTW>
                     <JumpToIcon />
-                    <div className="mt-5">Womean's</div>
+                    <div className="mt-5">Women's</div>
                   </ReadyIconTW>
-              </ReadyImage3TW>
+                </ReadyImage3TW>
+              </div>
+
             </ReadyImageContainerTW>
           </ReadyNameTW>
         </ReayToWearTW>
@@ -250,10 +253,6 @@ const ReadyNameSC = styled.div`
 const ReadyNameTW = tw(ReadyNameSC)`
   w-full
   bg-black
-  pt-16
-  px-12
-  text-7xl
-  font-bold
   relative
   text-white
 `;
@@ -263,18 +262,20 @@ const ReadyImageContainerTW = tw.div`
   right-0
   px-12
   mt-12
-  flex
   absolute
 `;
 
 const ReadyImage1SC = styled.div`
-  height: 434px;
 `
 
 const ReadyImage1TW = tw(ReadyImage1SC)`
-  bg-green-300
   mb-8
   relative
+  flex-1
+  bg-[url('https://customer-arya.oss-cn-shanghai.aliyuncs.com/BannerImages/1.jpg')]
+  bg-cover
+  bg-no-repeat
+  bg-center
 `;
 
 const ReadyImage2SC = styled.div`
@@ -284,17 +285,22 @@ const ReadyImage2SC = styled.div`
 const ReadyImage2TW = tw(ReadyImage2SC)`
 bg-yellow-200
 relative
+mb-[32px]
+bg-[url('https://customer-arya.oss-cn-shanghai.aliyuncs.com/BannerImages/2.jpg')]
+bg-cover bg-no-repeat bg-center
+
 `;
 
 const ReadyImage3SC = styled.div`
-  height: 900px;
+  height: 434px;
 `;
 
 const ReadyImage3TW = tw(ReadyImage3SC)`
-  flex-1
   bg-red-400
-  ml-4
   relative
+    bg-[url('https://customer-arya.oss-cn-shanghai.aliyuncs.com/BannerImages/3.jpg')]
+    bg-cover bg-no-repeat bg-center
+
 `;
 
 const ReadyIconTW = tw.div`
