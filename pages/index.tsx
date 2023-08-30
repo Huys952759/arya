@@ -6,7 +6,7 @@ import { styled } from "styled-components";
 import JumpToIcon from "@/components/business/icons/jumpToIcon";
 import Image from "next/image";
 import Head from "next/head";
-import { isMobileDevice } from "./utils";
+import { isMobileDevice } from "@/utils";
 import { useEffect, useState } from "react";
 import { Divider } from 'antd';
 import Link from "next/link";
