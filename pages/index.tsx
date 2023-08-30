@@ -5,6 +5,10 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 import { styled } from "styled-components";
 import JumpToIcon from "@/components/business/icons/jumpToIcon";
 import Image from "next/image";
+import Head from "next/head";
+import { isMobileDevice } from "./utils";
+import { useEffect, useState } from "react";
+import { Divider } from 'antd';
 
 const items = [
   <div className="w-full h-192 bg-slate-600" data-value="1">1</div>,
@@ -15,180 +19,192 @@ const items = [
 ];
 
 export default function Home() {
+  const [isPhone, setIsPhone] = useState(false);
+  useEffect(() => {
+    setIsPhone(isMobileDevice())
+  })
   return (
-    <PageContainer>
-      <BannerTW>
-        <AliceCarousel
-          mouseTracking
-          items={items}
-          controlsStrategy="alternate"
-          disableButtonsControls
-          autoPlay
-          autoPlayInterval={3000}
-        />
-      </BannerTW>
-      <ReayToWearTW>
-        <ReadyNameTW>
-          <div>
-            READY TO WEAR
-          </div>
-          <ReadyImageContainerTW>
-            <div className="flex-1 mr-4">
-              <ReadyImage1TW>
-                <ReadyIconTW>
-                  <JumpToIcon />
-                  <div className="mt-5">Womean's</div>
-                </ReadyIconTW>
-              </ReadyImage1TW>
-              <ReadyImage2TW>
-                <ReadyIconTW>
-                  <JumpToIcon />
-                  <div className="mt-5">Womean's</div>
-                </ReadyIconTW>
-              </ReadyImage2TW>
+    <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+      </Head>
+      <PageContainer>
+        <BannerTW>
+          <AliceCarousel
+            mouseTracking
+            items={items}
+            controlsStrategy="alternate"
+            disableButtonsControls
+            autoPlay
+            autoPlayInterval={3000}
+          />
+        </BannerTW>
+        <ReayToWearTW>
+          <ReadyNameTW>
+            <div>
+              READY TO WEAR
             </div>
-            <ReadyImage3TW>
-              <ReadyIconTW>
+            <ReadyImageContainerTW>
+              <div className="flex-1 mr-4">
+                <ReadyImage1TW>
+                  <ReadyIconTW>
+                    <JumpToIcon />
+                    <div className="mt-5">Womean's</div>
+                  </ReadyIconTW>
+                </ReadyImage1TW>
+                <ReadyImage2TW>
+                  <ReadyIconTW>
+                    <JumpToIcon />
+                    <div className="mt-5">Womean's</div>
+                  </ReadyIconTW>
+                </ReadyImage2TW>
+              </div>
+              <ReadyImage3TW>
+                <ReadyIconTW>
+                  <JumpToIcon />
+                  <div className="mt-5">Womean's</div>
+                </ReadyIconTW>
+              </ReadyImage3TW>
+            </ReadyImageContainerTW>
+          </ReadyNameTW>
+        </ReayToWearTW>
+        <AccessoriesTW>
+          <AccessoriesNmaeTW>ACCESSORIES</AccessoriesNmaeTW>
+          <AccessoriesContentTW>
+            <AccessoriesItemTW>
+              <div className="text-2xl text-black text-info">The classic shapes and sleek lines of the new Prada Arqué bag inspire a modern, chic silhouette.</div>
+              <div className="flex">
+                <div className="font-bold text-2xl text-black flex flex-col justify-center mr-8">
+                  <div>Discover</div>
+                  <div>More</div>
+                </div>
                 <JumpToIcon />
-                <div className="mt-5">Womean's</div>
-              </ReadyIconTW>
-            </ReadyImage3TW>
-          </ReadyImageContainerTW>
-        </ReadyNameTW>
-      </ReayToWearTW>
-      <AccessoriesTW>
-        <AccessoriesNmaeTW>ACCESSORIES</AccessoriesNmaeTW>
-        <AccessoriesContentTW>
-          <AccessoriesItemTW>
-            <div className="text-2xl text-black text-info">The classic shapes and sleek lines of the new Prada Arqué bag inspire a modern, chic silhouette.</div>
+              </div>
+            </AccessoriesItemTW>
+            <AccessoriesImageItemTW>
+              <Image
+                src='/example.png'
+                width={285}
+                height={409}
+                alt="img"
+              />
+              <div className="w-full text-black text-2xl mt-3">Ribbed Vest Top</div>
+            </AccessoriesImageItemTW>
+            <AccessoriesImageItemTW>
+              <Image
+                src='/example-1.png'
+                width={285}
+                height={409}
+                alt="img"
+              />
+              <div className="w-full text-black text-2xl mt-3">Ribbed Vest Top</div>
+            </AccessoriesImageItemTW>
+            <AccessoriesImageItemTW>
+              <Image
+                src='/example-2.png'
+                width={285}
+                height={409}
+                alt="img"
+              />
+              <div className="w-full text-black text-2xl mt-3">Ribbed Vest Top</div>
+            </AccessoriesImageItemTW>
+          </AccessoriesContentTW>
+        </AccessoriesTW>
+        <LifeStyleTW>
+          <LifeSTyleNameTW>
+            LIFESTYLE
+          </LifeSTyleNameTW>
+          <LifeIconTW>
             <div className="flex">
-              <div className="font-bold text-2xl text-black flex flex-col justify-center mr-8">
+              <div className="font-bold text-2xl text-white flex flex-col justify-center mr-8">
                 <div>Discover</div>
                 <div>More</div>
               </div>
-              <JumpToIcon />
+              <JumpToIcon mode="bgWhite" />
             </div>
-          </AccessoriesItemTW>
-          <AccessoriesImageItemTW>
+          </LifeIconTW>
+          <LifeStyleListTW>
+            <LifeStyleItemTW>
+              <Image
+                src='/example-2.png'
+                width={311}
+                height={486}
+                alt="img"
+              />
+              <div className="w-full text-white text-2xl mt-3">Ribbed Vest Top</div>
+            </LifeStyleItemTW>
+            <LifeStyleItemTW>
+              <Image
+                src='/example-2.png'
+                width={311}
+                height={486}
+                alt="img"
+              />
+              <div className="w-full text-white text-2xl mt-3">Ribbed Vest Top</div>
+            </LifeStyleItemTW>
+            <LifeStyleItemTW>
+              <Image
+                src='/example-2.png'
+                width={311}
+                height={486}
+                alt="img"
+              />
+              <div className="w-full text-white text-2xl mt-3">Ribbed Vest Top</div>
+            </LifeStyleItemTW>
+            <LifeStyleItemTW>
+              <Image
+                src='/example-2.png'
+                width={311}
+                height={486}
+                alt="img"
+              />
+              <div className="w-full text-white text-2xl mt-3">Ribbed Vest Top</div>
+            </LifeStyleItemTW>
+          </LifeStyleListTW>
+        </LifeStyleTW>
+        <ContactStyleTW className={isPhone ? 'flex-col pt-[40px] leading-[20px]' : 'flex-row pt-[50px] leading-[25px] font-bold'}>
+          {!isPhone && <LogoTW>
             <Image
-              src='/example.png'
-              width={285}
-              height={409}
-              alt="img"
+              className="w-full h-auto"
+              src='/logo.png'
+              width={140}
+              height={120}
+              alt="logo"
             />
-            <div className="w-full text-black text-2xl mt-3">Ribbed Vest Top</div>
-          </AccessoriesImageItemTW>
-          <AccessoriesImageItemTW>
-            <Image
-              src='/example-1.png'
-              width={285}
-              height={409}
-              alt="img"
-            />
-            <div className="w-full text-black text-2xl mt-3">Ribbed Vest Top</div>
-          </AccessoriesImageItemTW>
-          <AccessoriesImageItemTW>
-            <Image
-              src='/example-2.png'
-              width={285}
-              height={409}
-              alt="img"
-            />
-            <div className="w-full text-black text-2xl mt-3">Ribbed Vest Top</div>
-          </AccessoriesImageItemTW>
-        </AccessoriesContentTW>
-      </AccessoriesTW>
-      <LifeStyleTW>
-        <LifeSTyleNameTW>
-          LIFESTYLE
-        </LifeSTyleNameTW>
-        <LifeIconTW>
-          <div className="flex">
-            <div className="font-bold text-2xl text-white flex flex-col justify-center mr-8">
-              <div>Discover</div>
-              <div>More</div>
+          </LogoTW>}
+          <ContactDetailTW className={isPhone ? 'ml-[20px]' : 'ml-[110px]'}>
+            <div className="whitespace-nowrap">Contact Us:</div>
+            <div className="mt-[15px]">sales@aryacashmere.com</div>
+          </ContactDetailTW>
+          {isPhone && <Divider />}
+          <FollowUsTW className={isPhone ? 'ml-[20px]' : 'ml-[110px]'}>
+            <div className="whitespace-nowrap">Follow us on</div>
+            <div className={isPhone ? 'flex justify-between mt-[20px] w-[130px]' : 'flex justify-between mt-[12px] w-[115px]'}>
+              <Image
+                alt="brand"
+                width={24}
+                height={24}
+                src="/instagram.svg" className=" h-auto" />
+              <Image
+                alt="brand"
+                width={24}
+                height={24}
+                src="/facebook.svg" className=" h-auto" />
+              <Image
+                alt="brand"
+                width={24}
+                height={24}
+                src="/tiktok.svg" className="h-auto" />
             </div>
-            <JumpToIcon mode="bgWhite" />
-          </div>
-        </LifeIconTW>
-        <LifeStyleListTW>
-          <LifeStyleItemTW>
-            <Image
-              src='/example-2.png'
-              width={311}
-              height={486}
-              alt="img"
-            />
-            <div className="w-full text-white text-2xl mt-3">Ribbed Vest Top</div>
-          </LifeStyleItemTW>
-          <LifeStyleItemTW>
-            <Image
-              src='/example-2.png'
-              width={311}
-              height={486}
-              alt="img"
-            />
-            <div className="w-full text-white text-2xl mt-3">Ribbed Vest Top</div>
-          </LifeStyleItemTW>
-          <LifeStyleItemTW>
-            <Image
-              src='/example-2.png'
-              width={311}
-              height={486}
-              alt="img"
-            />
-            <div className="w-full text-white text-2xl mt-3">Ribbed Vest Top</div>
-          </LifeStyleItemTW>
-          <LifeStyleItemTW>
-            <Image
-              src='/example-2.png'
-              width={311}
-              height={486}
-              alt="img"
-            />
-            <div className="w-full text-white text-2xl mt-3">Ribbed Vest Top</div>
-          </LifeStyleItemTW>
-        </LifeStyleListTW>
-      </LifeStyleTW>
-      <ContactStyleTW>
-        <LogoTW>
-          <Image
-            className="w-full h-auto"
-            src='/logo.png'
-            width={140}
-            height={120}
-            alt="logo"
-          />
-        </LogoTW>
-        <ContactDetailTW>
-          <div className="whitespace-nowrap leading-[37px]">Contact Us:</div>
-          <div>sales@aryacashmere.com</div>
-        </ContactDetailTW>
-        <FollowUsTW>
-          <div className="whitespace-nowrap leading-[37px]">Follow us on</div>
-          <div className="flex w-[90px] justify-between">
-            <Image
-              alt="brand"
-              width={24}
-              height={24}
-              src="/instagram.svg" className=" h-auto" />
-            <Image
-              alt="brand"
-              width={24}
-              height={24}
-              src="/facebook.svg" className=" h-auto" />
-            <Image
-              alt="brand"
-              width={24}
-              height={24}
-              src="/tiktok.svg" className="h-auto" />
-          </div>
-        </FollowUsTW>
-        <DescriptionTW>
-          <div>Sustainability + Transparency</div>
-        </DescriptionTW>
-      </ContactStyleTW>
-    </PageContainer>
+          </FollowUsTW>
+          {isPhone && <Divider />}
+          <DescriptionTW className={isPhone ? 'ml-[20px] pb-[20px]' : 'ml-[110px]'}>
+            Sustainability + Transparency
+          </DescriptionTW>
+        </ContactStyleTW>
+      </PageContainer>
+    </>
   )
 }
 
@@ -349,33 +365,26 @@ const ContactStyleSC = styled('div')`
 const ContactStyleTW = tw(ContactStyleSC)`
   w-full
   bg-white
-  flex
-  pt-[50px]
-  font-bold
   text-[18px]
-  leading-[37px]
+  flex
 `
 
 const LogoTW = tw.div`
     h-[142px]
     w-[120px]
-    ml-[100px]
+    ml-[120px]
 `;
 
 const ContactDetailTW = tw.div`
   h-[62px]
   w-[185px]
-  ml-[110px]
 `
 
 const FollowUsTW = tw.div`
-
   w-[185px]
-  ml-[110px]
 `
 
 const DescriptionTW = tw.div`
-  h-[25px]
   ml-[120px]
 `
 

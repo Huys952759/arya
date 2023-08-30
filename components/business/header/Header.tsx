@@ -105,6 +105,7 @@ items-start
 absolute
 bg-white
 z-50
+overflow-x-scroll
 `;
 
 
