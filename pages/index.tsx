@@ -261,7 +261,7 @@ export default function Home({ IndexConfig }) {
                 alt="brand"
                 width={24}
                 height={24}
-                src="/instagram.svg" className=" h-auto" />
+                src="/Instagram.svg" className=" h-auto" />
               <Image
                 alt="brand"
                 width={24}
