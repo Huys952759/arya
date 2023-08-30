@@ -26,7 +26,16 @@ const initState = {
         maintenance: {
             English: 'Care',
             Chinese: '保养'
+        },
+        discover: {
+            English: 'Discover',
+            Chinese: '发现'
+        },
+        more: {
+            English: 'More',
+            Chinese: '更多'
         }
+
     },
 };
 
