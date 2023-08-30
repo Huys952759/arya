@@ -14,7 +14,7 @@ import Link from "next/link";
 
 const items = (banners) => banners.map(banner => (
   <Link href={`/product/${banner.productSKU}`} draggable="false">
-    <BannerItemTW>
+    <BannerItemTW className="mt-[10px] mb-[10px]">
       <Image
         src={banner.imgURL}
         width={1200}
@@ -22,6 +22,7 @@ const items = (banners) => banners.map(banner => (
         alt="img"
         draggable="false"
         quality={100}
+        style={{ objectFit: 'cover' }}
       />
     </BannerItemTW>
   </Link>
@@ -29,7 +30,7 @@ const items = (banners) => banners.map(banner => (
 
 export default function Home({ IndexConfig }) {
   const [isPhone, setIsPhone] = useState(false);
-  
+
   useEffect(() => {
     setIsPhone(isMobileDevice())
   })
@@ -57,12 +58,12 @@ export default function Home({ IndexConfig }) {
             </div>
             <ReadyImageContainerTW>
               <div className="flex-1 mr-4">
-                <ReadyImage1TW>
-                  <ReadyIconTW>
-                    <JumpToIcon />
-                    <div className="mt-5">Womean's</div>
-                  </ReadyIconTW>
-                </ReadyImage1TW>
+              <ReadyImage1TW>
+                <ReadyIconTW>
+                  <JumpToIcon />
+                  <div className="mt-5">Womean's</div>
+                </ReadyIconTW>
+              </ReadyImage1TW>
                 <ReadyImage2TW>
                   <ReadyIconTW>
                     <JumpToIcon />
@@ -71,10 +72,10 @@ export default function Home({ IndexConfig }) {
                 </ReadyImage2TW>
               </div>
               <ReadyImage3TW>
-                <ReadyIconTW>
-                  <JumpToIcon />
-                  <div className="mt-5">Womean's</div>
-                </ReadyIconTW>
+                  <ReadyIconTW>
+                    <JumpToIcon />
+                    <div className="mt-5">Womean's</div>
+                  </ReadyIconTW>
               </ReadyImage3TW>
             </ReadyImageContainerTW>
           </ReadyNameTW>
@@ -230,7 +231,6 @@ const BannerSC = styled.div`
 
 const BannerTW = tw(BannerSC)`
   w-full
-  h-192
   mt-16
 `;
 
@@ -441,7 +441,6 @@ const BannerItemSC = styled('div')`
 
 const BannerItemTW = tw(BannerItemSC)`
 w-full 
-h-192
 `;
 
 export const getStaticProps = async ({
