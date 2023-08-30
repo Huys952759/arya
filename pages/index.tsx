@@ -9,17 +9,27 @@ import Head from "next/head";
 import { isMobileDevice } from "./utils";
 import { useEffect, useState } from "react";
 import { Divider } from 'antd';
+import Link from "next/link";
 
-const items = [
-  <div className="w-full h-192 bg-slate-600" data-value="1">1</div>,
-  <div className="w-full h-192 bg-red-400" data-value="2">2</div>,
-  <div className="w-full h-192 bg-yellow-50" data-value="3">3</div>,
-  <div className="w-full h-192 bg-fuchsia-200" data-value="4">4</div>,
-  <div className="w-full h-192 bg-green-600" data-value="5">5</div>,
-];
 
-export default function Home() {
+const items = (banners) => banners.map(banner => (
+  <Link href={`/product/${banner.productSKU}`} draggable="false">
+    <BannerItemTW>
+      <Image
+        src={banner.imgURL}
+        width={1200}
+        height={640}
+        alt="img"
+        draggable="false"
+        quality={100}
+      />
+    </BannerItemTW>
+  </Link>
+))
+
+export default function Home({ IndexConfig }) {
   const [isPhone, setIsPhone] = useState(false);
+  
   useEffect(() => {
     setIsPhone(isMobileDevice())
   })
@@ -33,7 +43,7 @@ export default function Home() {
         <BannerTW>
           <AliceCarousel
             mouseTracking
-            items={items}
+            items={items(IndexConfig.banner)}
             controlsStrategy="alternate"
             disableButtonsControls
             autoPlay
@@ -167,9 +177,9 @@ export default function Home() {
           {!isPhone && <LogoTW>
             <Image
               className="w-full h-auto"
-              src='/logo.png'
-              width={140}
-              height={120}
+              src='/AC.jpg'
+              width={1057}
+              height={1057}
               alt="logo"
             />
           </LogoTW>}
@@ -251,7 +261,7 @@ const ReadyNameTW = tw(ReadyNameSC)`
 const ReadyImageContainerTW = tw.div`
   left-0
   right-0
-   px-12
+  px-12
   mt-12
   flex
   absolute
@@ -418,3 +428,51 @@ const LifeStyleItemSC = styled.div`
 const LifeStyleItemTW = tw(LifeStyleItemSC)`
 
 `
+
+const BannerItemSC = styled('div')`
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    user-select: none;
+  }
+`
+
+const BannerItemTW = tw(BannerItemSC)`
+w-full 
+h-192
+`;
+
+export const getStaticProps = async ({
+  params,
+}) => {
+  const IndexConfig = {
+    "banner": [
+      {
+        "imgURL": "https://customer-arya.oss-cn-shanghai.aliyuncs.com/BannerImages/1.jpg",
+        "mobileImgURL": "https://customer-arya.oss-cn-shanghai.aliyuncs.com/BannerImages/1mobile.jpg",
+        "productSKU": "AC24SS025",
+      },
+      {
+        "imgURL": "https://customer-arya.oss-cn-shanghai.aliyuncs.com/BannerImages/2.jpg",
+        "mobileImgURL": "https://customer-arya.oss-cn-shanghai.aliyuncs.com/BannerImages/2mobile.jpg",
+        "productSKU": "AC24SS016",
+      },
+      {
+        "imgURL": "https://customer-arya.oss-cn-shanghai.aliyuncs.com/BannerImages/3.jpg",
+        "mobileImgURL": "https://customer-arya.oss-cn-shanghai.aliyuncs.com/BannerImages/3mobile.jpg",
+        "productSKU": "AC24SS011",
+      }
+    ],
+    "readToWear": [{}, {}, {}],
+    "accessories": [{}, {}, {}],
+    "lifestyle": [{}, {}, {}]
+  }
+  return {
+    props: {
+      IndexConfig,
+    },
+    revalidate: 10,
+  }
+}

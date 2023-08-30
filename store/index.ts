@@ -14,6 +14,18 @@ const initState = {
         stories: {
             English: 'STORIES',
             Chinese: '品牌故事'
+        },
+        material: {
+            English: 'Materials',
+            Chinese: '材质'
+        },
+        description: {
+            English: 'Description',
+            Chinese: '描述'
+        },
+        maintenance: {
+            English: 'Care',
+            Chinese: '保养'
         }
     },
 };

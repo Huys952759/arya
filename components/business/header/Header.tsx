@@ -6,12 +6,14 @@ import { Category } from "@/types";
 import { CategoriesMockData } from "@/types/CategoriesMockData";
 import { useStore } from "@/store";
 import Link from "next/link";
+import LanguageIcon from "../icons/LanguageIcon";
 
 export default function Header({ categoties = CategoriesMockData }: { categoties: Category[] }) {
     const [categotiesTree, setCategotiesTree] = useState(() => formTreeData(categoties))
-    const [language] = useStore.language();
+    const [language, setLanguage] = useStore.language();
     const [words] = useStore.words();
     const [showSecond, setShowSecond] = useState(false);
+
     return (
         <HeaderTW>
             <TopHeaderTW>
@@ -22,16 +24,28 @@ export default function Header({ categoties = CategoriesMockData }: { categoties
                     />
                 </SearchTW>
                 <LogoTW>
-                    <Image
-                        className="w-full h-auto"
-                        src='/logo.png'
-                        width={169}
-                        height={128}
-                        alt="logo"
-                    />
+                    <Link href='/'>
+                        <Image
+                            className="w-full h-auto"
+                            src='/AC.jpg'
+                            width={1057}
+                            height={1057}
+                            alt="logo"
+                        />
+                    </Link>
                 </LogoTW>
-                <LanguageTW>
-
+                <LanguageTW
+                    onClick={() => {
+                        setLanguage(draftRef => {
+                            if(draftRef.current === 'English') {
+                                draftRef.current = 'Chinese'
+                            }else if(draftRef.current === 'Chinese') {
+                                draftRef.current = 'English'
+                            }
+                        })
+                    }}
+                >
+                    <LanguageIcon />
                 </LanguageTW>
             </TopHeaderTW>
             <CategotyTW
@@ -58,11 +72,11 @@ export default function Header({ categoties = CategoriesMockData }: { categoties
                         </CategoryItemTW>
                     ))
                 }
-                <CategoryItemTW>
+                {/* <CategoryItemTW>
                     <FistItemTW>
                         {words.stories[language]}
                     </FistItemTW>
-                </CategoryItemTW>
+                </CategoryItemTW> */}
             </CategotyTW>
         </HeaderTW>
     )
@@ -82,17 +96,34 @@ const TopHeaderTW = tw.div`
     border-b
     border-line
     px-32
+    relative
 `
 
 const SearchTW = tw.div`
-
+    opacity-0
 `;
 
 const LogoTW = tw.div`
     w-16
+    absolute
+    left-0
+    right-0
+    top-0
+    bottom-0
+    m-auto
+    h-fit
 `;
 
-const LanguageTW = tw.div`
+const LanguageSC = styled('div')`
+    
+.icon {
+    width: 24px;
+    height: 24px;
+    fill: black;
+}
+`
+
+const LanguageTW = tw(LanguageSC)`
 
 `;
 
