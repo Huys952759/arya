@@ -6,10 +6,11 @@ import { styled } from "styled-components";
 import JumpToIcon from "@/components/business/icons/jumpToIcon";
 import Image from "next/image";
 import Head from "next/head";
-import { isMobileDevice } from "./utils";
+import { isMobileDevice } from "@/utils";
 import { useEffect, useState } from "react";
 import { Divider } from 'antd';
 import Link from "next/link";
+import { useStore } from "@/store";
 
 
 const items = (banners) => banners.map(banner => (
@@ -30,6 +31,8 @@ const items = (banners) => banners.map(banner => (
 
 export default function Home({ IndexConfig }) {
   const [isPhone, setIsPhone] = useState(false);
+  const [language, setLanguage] = useStore.language();
+  const [words] = useStore.words();
 
   useEffect(() => {
     setIsPhone(isMobileDevice())
@@ -54,29 +57,66 @@ export default function Home({ IndexConfig }) {
         <ReayToWearTW className={isPhone ? 'text-[18px]' : 'text-[64px]'}>
           <ReadyNameTW>
             <div className={isPhone ? 'font-bold pt-[20px] pl-[20px]' : 'font-bold pt-[67px] pl-[50px]'}>
-              READY TO WEAR
+              {IndexConfig.readToWear.name[language]}
             </div>
             <ReadyImageContainerTW className={isPhone ? '' : 'flex flex-row-reverse'}>
               <ReadyImage1TW className={isPhone ? 'h-[386px]' : 'h-[900px] ml-[32px]'}>
-                <ReadyIconTW>
-                  <JumpToIcon />
-                  <div className="mt-5">Women's</div>
-                </ReadyIconTW>
+                <Image
+                  src={IndexConfig.readToWear.images[0].imgURL}
+                  width={750}
+                  height={1125}
+                  alt="img"
+                  draggable="false"
+                  quality={100}
+                />
+                <Link
+                  href={`/product/${IndexConfig.readToWear.images[0].productSKU}`}
+                >
+                  <ReadyIconTW>
+                    <JumpToIcon />
+                    <div className="mt-5">{IndexConfig.readToWear.images[0].name[language]}</div>
+                  </ReadyIconTW>
+                </Link>
               </ReadyImage1TW>
 
               <div className={isPhone ? 'flex' : 'flex-1'}>
                 <ReadyImage2TW className={isPhone ? 'w-[241px] h-[160px]' : ''}>
-                  <ReadyIconTW>
-                    <JumpToIcon />
-                    <div className="mt-5">Women's</div>
-                  </ReadyIconTW>
+                  <Image
+                    src={IndexConfig.readToWear.images[1].imgURL}
+                    width={1200}
+                    height={640}
+                    alt="img"
+                    draggable="false"
+                    quality={100}
+                  />
+                  <Link
+                    href={`/product/${IndexConfig.readToWear.images[1].productSKU}`}
+                  >
+                    <ReadyIconTW>
+                      <JumpToIcon />
+                      <div className="mt-5">{IndexConfig.readToWear.images[1].name[language]}</div>
+                    </ReadyIconTW>
+                  </Link>
                 </ReadyImage2TW>
 
                 <ReadyImage3TW className={isPhone ? 'w-[241px] h-[160px]' : ''}>
-                  <ReadyIconTW>
-                    <JumpToIcon />
-                    <div className="mt-5">Women's</div>
-                  </ReadyIconTW>
+                  <Image
+                    src={IndexConfig.readToWear.images[2].imgURL}
+                    width={1200}
+                    height={640}
+                    alt="img"
+                    draggable="false"
+                    quality={100}
+                  />
+                  <Link
+                    href={`/product/${IndexConfig.readToWear.images[2].productSKU}`}
+                  >
+                    <ReadyIconTW>
+                      <JumpToIcon />
+                      <div className="mt-5">{IndexConfig.readToWear.images[2].name[language]}</div>
+                    </ReadyIconTW>
+                  </Link>
+
                 </ReadyImage3TW>
               </div>
 
@@ -84,28 +124,34 @@ export default function Home({ IndexConfig }) {
           </ReadyNameTW>
         </ReayToWearTW>
         <AccessoriesTW>
-          <AccessoriesNmaeTW>ACCESSORIES</AccessoriesNmaeTW>
+          <AccessoriesNmaeTW>{IndexConfig.accessories.name[language]}</AccessoriesNmaeTW>
           <AccessoriesContentTW>
             <AccessoriesItemTW>
               <div className="text-2xl text-black text-info">The classic shapes and sleek lines of the new Prada Arqué bag inspire a modern, chic silhouette.</div>
               <div className="flex">
                 <div className="font-bold text-2xl text-black flex flex-col justify-center mr-8">
-                  <div>Discover</div>
-                  <div>More</div>
+                  <div>{words.discover[language]}</div>
+                  <div>{words.more[language]}</div>
                 </div>
                 <JumpToIcon />
               </div>
             </AccessoriesItemTW>
-            <AccessoriesImageItemTW>
-              <Image
-                src='/example.png'
-                width={285}
-                height={409}
-                alt="img"
-              />
-              <div className="w-full text-black text-2xl mt-3">Ribbed Vest Top</div>
-            </AccessoriesImageItemTW>
-            <AccessoriesImageItemTW>
+            <Link
+              href={`/product/${IndexConfig.accessories.images[0].productSKU}`}
+            >
+              <AccessoriesImageItemTW>
+                <Image
+                  src={IndexConfig.accessories.images[0].imgURL}
+                  width={1200}
+                  height={640}
+                  alt="img"
+                  draggable="false"
+                  quality={100}
+                />
+                <div className="w-full text-black text-2xl mt-3">{IndexConfig.accessories.images[0].name[language]}</div>
+              </AccessoriesImageItemTW>
+            </Link>
+            {/* <AccessoriesImageItemTW>
               <Image
                 src='/example-1.png'
                 width={285}
@@ -122,59 +168,75 @@ export default function Home({ IndexConfig }) {
                 alt="img"
               />
               <div className="w-full text-black text-2xl mt-3">Ribbed Vest Top</div>
-            </AccessoriesImageItemTW>
+            </AccessoriesImageItemTW> */}
           </AccessoriesContentTW>
         </AccessoriesTW>
         <LifeStyleTW>
           <LifeSTyleNameTW>
-            LIFESTYLE
+            {IndexConfig.lifestyle.name[language]}
           </LifeSTyleNameTW>
           <LifeIconTW>
             <div className="flex">
               <div className="font-bold text-2xl text-white flex flex-col justify-center mr-8">
-                <div>Discover</div>
-                <div>More</div>
+                <div>{words.discover[language]}</div>
+                <div>{words.more[language]}</div>
               </div>
               <JumpToIcon mode="bgWhite" />
             </div>
           </LifeIconTW>
           <LifeStyleListTW>
-            <LifeStyleItemTW>
-              <Image
-                src='/example-2.png'
-                width={311}
-                height={486}
-                alt="img"
-              />
-              <div className="w-full text-white text-2xl mt-3">Ribbed Vest Top</div>
-            </LifeStyleItemTW>
-            <LifeStyleItemTW>
-              <Image
-                src='/example-2.png'
-                width={311}
-                height={486}
-                alt="img"
-              />
-              <div className="w-full text-white text-2xl mt-3">Ribbed Vest Top</div>
-            </LifeStyleItemTW>
-            <LifeStyleItemTW>
-              <Image
-                src='/example-2.png'
-                width={311}
-                height={486}
-                alt="img"
-              />
-              <div className="w-full text-white text-2xl mt-3">Ribbed Vest Top</div>
-            </LifeStyleItemTW>
-            <LifeStyleItemTW>
-              <Image
-                src='/example-2.png'
-                width={311}
-                height={486}
-                alt="img"
-              />
-              <div className="w-full text-white text-2xl mt-3">Ribbed Vest Top</div>
-            </LifeStyleItemTW>
+            <Link href={`/product/${IndexConfig.lifestyle.images[0].productSKU}`}>
+              <LifeStyleItemTW>
+                <Image
+                  src={IndexConfig.lifestyle.images[0].imgURL}
+                  width={750}
+                  height={1125}
+                  alt="img"
+                  draggable="false"
+                  quality={100}
+                />
+                <div className="w-full text-white text-2xl mt-3">{IndexConfig.lifestyle.images[0].name[language]}</div>
+              </LifeStyleItemTW>
+            </Link>
+            <Link href={`/product/${IndexConfig.lifestyle.images[1].productSKU}`}>
+              <LifeStyleItemTW>
+                <Image
+                  src={IndexConfig.lifestyle.images[1].imgURL}
+                  width={750}
+                  height={1125}
+                  alt="img"
+                  draggable="false"
+                  quality={100}
+                />
+                <div className="w-full text-white text-2xl mt-3">{IndexConfig.lifestyle.images[1].name[language]}</div>
+              </LifeStyleItemTW>
+            </Link>
+            <Link href={`/product/${IndexConfig.lifestyle.images[2].productSKU}`}>
+              <LifeStyleItemTW>
+                <Image
+                  src={IndexConfig.lifestyle.images[2].imgURL}
+                  width={750}
+                  height={1125}
+                  alt="img"
+                  draggable="false"
+                  quality={100}
+                />
+                <div className="w-full text-white text-2xl mt-3">{IndexConfig.lifestyle.images[2].name[language]}</div>
+              </LifeStyleItemTW>
+            </Link>
+            <Link href={`/product/${IndexConfig.lifestyle.images[3].productSKU}`}>
+              <LifeStyleItemTW>
+                <Image
+                  src={IndexConfig.lifestyle.images[3].imgURL}
+                  width={750}
+                  height={1125}
+                  alt="img"
+                  draggable="false"
+                  quality={100}
+                />
+                <div className="w-full text-white text-2xl mt-3">{IndexConfig.lifestyle.images[3].name[language]}</div>
+              </LifeStyleItemTW>
+            </Link>
           </LifeStyleListTW>
         </LifeStyleTW>
         <ContactStyleTW className={isPhone ? 'flex-col pt-[40px] leading-[20px]' : 'flex-row pt-[50px] leading-[25px] font-bold'}>
@@ -199,9 +261,13 @@ export default function Home({ IndexConfig }) {
                 alt="brand"
                 width={24}
                 height={24}
+<<<<<<< HEAD
                 style={{cursor: 'pointer'}}
                 onClick={() => window.open('https://www.instagram.com/aryacashmere/')}
                 src="/instagram.svg" className=" h-auto" />
+=======
+                src="/Instagram.svg" className=" h-auto" />
+>>>>>>> f109ca3eee09aca2bbef9e99ba217a4d1308247d
               <Image
                 alt="brand"
                 width={24}
@@ -270,40 +336,52 @@ const ReadyImageContainerTW = tw.div`
 `;
 
 const ReadyImage1SC = styled.div`
+
+ img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+ }
 `
 
 const ReadyImage1TW = tw(ReadyImage1SC)`
   mb-8
   relative
   flex-1
-  bg-[url('https://customer-arya.oss-cn-shanghai.aliyuncs.com/BannerImages/1.jpg')]
-  bg-cover
-  bg-no-repeat
-  bg-center
 `;
 
 const ReadyImage2SC = styled.div`
   height: 434px;
+
+  img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+ }
 `;
 
 const ReadyImage2TW = tw(ReadyImage2SC)`
 bg-yellow-200
 relative
 mb-[32px]
-bg-[url('https://customer-arya.oss-cn-shanghai.aliyuncs.com/BannerImages/2.jpg')]
-bg-cover bg-no-repeat bg-center
-
 `;
 
 const ReadyImage3SC = styled.div`
   height: 434px;
+
+  img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+ }
 `;
 
 const ReadyImage3TW = tw(ReadyImage3SC)`
   bg-red-400
   relative
-    bg-[url('https://customer-arya.oss-cn-shanghai.aliyuncs.com/BannerImages/3.jpg')]
-    bg-cover bg-no-repeat bg-center
 
 `;
 
@@ -341,7 +419,6 @@ const AccessoriesContentTW = tw(AccessoriesContentSC)`
   w-full
   mt-14
   flex
-  justify-between
 `
 
 const AccessoriesItemSC = styled.div`
@@ -359,10 +436,13 @@ const AccessoriesItemTW = tw(AccessoriesItemSC)`
 
 const AccessoriesImageItemSC = styled.div`
   width: 285px;
-
+  height: 409px;
+  margin-left: 200px;
   img {
-    width: 285px;
-    height: 409px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 `;
 const AccessoriesImageItemTW = tw(AccessoriesImageItemSC)`
@@ -427,11 +507,13 @@ const LifeStyleListTW = tw.div`
 
 const LifeStyleItemSC = styled.div`
   width: 311px;
-
+  height: 486px;
 
   img {
-    width: 311px;
-    height: 486px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 
 `
@@ -474,9 +556,102 @@ export const getStaticProps = async ({
         "productSKU": "AC24SS011",
       }
     ],
-    "readToWear": [{}, {}, {}],
-    "accessories": [{}, {}, {}],
-    "lifestyle": [{}, {}, {}]
+    "readToWear": {
+      name: {
+        Chinese: '成衣',
+        English: 'READY TO WEAR',
+      },
+      images: [
+        {
+          "imgURL": "https://customer-arya.oss-cn-shanghai.aliyuncs.com/BannerImages/1.jpg",
+          "mobileImgURL": "https://customer-arya.oss-cn-shanghai.aliyuncs.com/BannerImages/1mobile.jpg",
+          "productSKU": "AC24SS025",
+          "name": {
+            Chinese: '披肩',
+            English: 'Cardigan',
+          }
+        },
+        {
+          "imgURL": "https://customer-arya.oss-cn-shanghai.aliyuncs.com/BannerImages/2.jpg",
+          "mobileImgURL": "https://customer-arya.oss-cn-shanghai.aliyuncs.com/BannerImages/2mobile.jpg",
+          "productSKU": "AC24SS016",
+          "name": {
+            Chinese: '连衣裙',
+            English: 'Dress',
+          }
+        },
+        {
+          "imgURL": "https://customer-arya.oss-cn-shanghai.aliyuncs.com/BannerImages/3.jpg",
+          "mobileImgURL": "https://customer-arya.oss-cn-shanghai.aliyuncs.com/BannerImages/3mobile.jpg",
+          "productSKU": "AC24SS011",
+          "name": {
+            Chinese: '套头衫',
+            English: 'Jumper',
+          }
+        }
+      ]
+    },
+    "accessories": {
+      name: {
+        Chinese: '配饰',
+        English: 'ACCESSORIES',
+      },
+      images: [
+        {
+          "imgURL": "https://customer-arya.oss-cn-shanghai.aliyuncs.com/BannerImages/1.jpg",
+          "mobileImgURL": "https://customer-arya.oss-cn-shanghai.aliyuncs.com/BannerImages/1mobile.jpg",
+          "productSKU": "AC24SS025",
+          "name": {
+            Chinese: '披肩',
+            English: 'Cardigan',
+          }
+        }
+      ]
+    },
+    "lifestyle": {
+      name: {
+        Chinese: '生活方式',
+        English: 'LIFESTYLE',
+      },
+      images: [
+        {
+          "imgURL": "https://customer-arya.oss-cn-shanghai.aliyuncs.com/AC24SS/AC24SS07/Khaki/%E6%9C%AA%E5%91%BD%E5%90%8D%E4%BC%9A%E8%AF%9D12111.jpg",
+          "mobileImgURL": "https://customer-arya.oss-cn-shanghai.aliyuncs.com/AC24SS/AC24SS07/Khaki/%E6%9C%AA%E5%91%BD%E5%90%8D%E4%BC%9A%E8%AF%9D12111.jpg",
+          "productSKU": "AC24SS07",
+          "name": {
+            Chinese: '绢丝棉开衫',
+            English: 'Silk-cotton cardigan',
+          }
+        },
+        {
+          "imgURL": "https://customer-arya.oss-cn-shanghai.aliyuncs.com/AC24SS/AC24SS026/Cloud%20Blue/%E6%9C%AA%E5%91%BD%E5%90%8D%E4%BC%9A%E8%AF%9D12089.jpg",
+          "mobileImgURL": "https://customer-arya.oss-cn-shanghai.aliyuncs.com/AC24SS/AC24SS026/Cloud%20Blue/%E6%9C%AA%E5%91%BD%E5%90%8D%E4%BC%9A%E8%AF%9D12089.jpg",
+          "productSKU": "AC24SS026",
+          "name": {
+            Chinese: '绢丝有机棉背心',
+            English: 'Silk-cotton tank top',
+          }
+        },
+        {
+          "imgURL": "https://customer-arya.oss-cn-shanghai.aliyuncs.com/AC24SS/AC24SS027/Cloud%20Blue/%E6%9C%AA%E5%91%BD%E5%90%8D%E4%BC%9A%E8%AF%9D12089.jpg",
+          "mobileImgURL": "https://customer-arya.oss-cn-shanghai.aliyuncs.com/AC24SS/AC24SS027/Cloud%20Blue/%E6%9C%AA%E5%91%BD%E5%90%8D%E4%BC%9A%E8%AF%9D12089.jpg",
+          "productSKU": "AC24SS027",
+          "name": {
+            Chinese: '绢丝有机棉束脚裤',
+            English: 'Silk-cotton joggers',
+          }
+        },
+        {
+          "imgURL": "https://customer-arya.oss-cn-shanghai.aliyuncs.com/AC24SS/AC24SS028/Khaki/%E6%9C%AA%E5%91%BD%E5%90%8D%E4%BC%9A%E8%AF%9D12161.jpg",
+          "mobileImgURL": "https://customer-arya.oss-cn-shanghai.aliyuncs.com/AC24SS/AC24SS028/Khaki/%E6%9C%AA%E5%91%BD%E5%90%8D%E4%BC%9A%E8%AF%9D12161.jpg",
+          "productSKU": "AC24SS028",
+          "name": {
+            Chinese: '绢丝有机棉直筒裤',
+            English: 'Silk-cotton trousers',
+          }
+        }
+      ]
+    }
   }
   return {
     props: {
