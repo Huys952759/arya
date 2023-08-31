@@ -261,13 +261,9 @@ export default function Home({ IndexConfig }) {
                 alt="brand"
                 width={24}
                 height={24}
-<<<<<<< HEAD
                 style={{cursor: 'pointer'}}
                 onClick={() => window.open('https://www.instagram.com/aryacashmere/')}
                 src="/instagram.svg" className=" h-auto" />
-=======
-                src="/Instagram.svg" className=" h-auto" />
->>>>>>> f109ca3eee09aca2bbef9e99ba217a4d1308247d
               <Image
                 alt="brand"
                 width={24}
