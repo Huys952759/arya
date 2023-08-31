@@ -199,11 +199,15 @@ export default function Home({ IndexConfig }) {
                 alt="brand"
                 width={24}
                 height={24}
+                style={{cursor: 'pointer'}}
+                onClick={() => window.open('https://www.instagram.com/aryacashmere/')}
                 src="/instagram.svg" className=" h-auto" />
               <Image
                 alt="brand"
                 width={24}
                 height={24}
+                style={{cursor: 'pointer'}}
+                onClick={() => {window.open('https://www.facebook.com/profile.php?id=61550338095612')}}
                 src="/facebook.svg" className=" h-auto" />
               <Image
                 alt="brand"
