@@ -54,7 +54,7 @@ export default function Home({ IndexConfig }) {
             autoPlayInterval={3000}
           />
         </BannerTW>
-        <ReayToWearTW className={isPhone ? 'text-[18px]' : 'text-[64px]'}>
+        <ReayToWearTW className={isPhone ? 'text-[18px]' : 'text-[48px]'}>
           <ReadyNameTW>
             <div className={isPhone ? 'font-bold pt-[20px] pl-[20px]' : 'font-bold pt-[67px] pl-[50px]'}>
               {IndexConfig.readToWear.name[language]}
@@ -74,7 +74,7 @@ export default function Home({ IndexConfig }) {
                 >
                   <ReadyIconTW>
                     <JumpToIcon />
-                    <div className="mt-5">{IndexConfig.readToWear.images[0].name[language]}</div>
+                    <div className="mt-5 text-4xl">{IndexConfig.readToWear.images[0].name[language]}</div>
                   </ReadyIconTW>
                 </Link>
               </ReadyImage1TW>
@@ -94,7 +94,7 @@ export default function Home({ IndexConfig }) {
                   >
                     <ReadyIconTW>
                       <JumpToIcon />
-                      <div className="mt-5">{IndexConfig.readToWear.images[1].name[language]}</div>
+                      <div className="mt-5 text-4xl">{IndexConfig.readToWear.images[1].name[language]}</div>
                     </ReadyIconTW>
                   </Link>
                 </ReadyImage2TW>
@@ -113,7 +113,7 @@ export default function Home({ IndexConfig }) {
                   >
                     <ReadyIconTW>
                       <JumpToIcon />
-                      <div className="mt-5">{IndexConfig.readToWear.images[2].name[language]}</div>
+                      <div className="mt-5 text-4xl">{IndexConfig.readToWear.images[2].name[language]}</div>
                     </ReadyIconTW>
                   </Link>
 
@@ -127,7 +127,7 @@ export default function Home({ IndexConfig }) {
           <AccessoriesNmaeTW>{IndexConfig.accessories.name[language]}</AccessoriesNmaeTW>
           <AccessoriesContentTW>
             <AccessoriesItemTW>
-              <div className="text-2xl text-black text-info">The classic shapes and sleek lines of the new Prada Arqué bag inspire a modern, chic silhouette.</div>
+              <div className="text-2xl text-black text-info"></div>
               <div className="flex">
                 <div className="font-bold text-2xl text-black flex flex-col justify-center mr-8">
                   <div>{words.discover[language]}</div>
@@ -148,7 +148,7 @@ export default function Home({ IndexConfig }) {
                   draggable="false"
                   quality={100}
                 />
-                <div className="w-full text-black text-2xl mt-3">{IndexConfig.accessories.images[0].name[language]}</div>
+                <div className="w-full text-black text-xl mt-3">{IndexConfig.accessories.images[0].name[language]}</div>
               </AccessoriesImageItemTW>
             </Link>
             {/* <AccessoriesImageItemTW>
@@ -195,7 +195,7 @@ export default function Home({ IndexConfig }) {
                   draggable="false"
                   quality={100}
                 />
-                <div className="w-full text-white text-2xl mt-3">{IndexConfig.lifestyle.images[0].name[language]}</div>
+                <div className="w-full text-white text-xl mt-3">{IndexConfig.lifestyle.images[0].name[language]}</div>
               </LifeStyleItemTW>
             </Link>
             <Link href={`/product/${IndexConfig.lifestyle.images[1].productSKU}`}>
@@ -208,7 +208,7 @@ export default function Home({ IndexConfig }) {
                   draggable="false"
                   quality={100}
                 />
-                <div className="w-full text-white text-2xl mt-3">{IndexConfig.lifestyle.images[1].name[language]}</div>
+                <div className="w-full text-white text-xl mt-3">{IndexConfig.lifestyle.images[1].name[language]}</div>
               </LifeStyleItemTW>
             </Link>
             <Link href={`/product/${IndexConfig.lifestyle.images[2].productSKU}`}>
@@ -221,7 +221,7 @@ export default function Home({ IndexConfig }) {
                   draggable="false"
                   quality={100}
                 />
-                <div className="w-full text-white text-2xl mt-3">{IndexConfig.lifestyle.images[2].name[language]}</div>
+                <div className="w-full text-white text-xl mt-3">{IndexConfig.lifestyle.images[2].name[language]}</div>
               </LifeStyleItemTW>
             </Link>
             <Link href={`/product/${IndexConfig.lifestyle.images[3].productSKU}`}>
@@ -234,7 +234,7 @@ export default function Home({ IndexConfig }) {
                   draggable="false"
                   quality={100}
                 />
-                <div className="w-full text-white text-2xl mt-3">{IndexConfig.lifestyle.images[3].name[language]}</div>
+                <div className="w-full text-white text-xl mt-3">{IndexConfig.lifestyle.images[3].name[language]}</div>
               </LifeStyleItemTW>
             </Link>
           </LifeStyleListTW>
@@ -398,7 +398,7 @@ const AccessoriesTW = tw(AccessoriesSC)`
 `;
 
 const AccessoriesNmaeTW = tw.div`
-text-7xl
+text-[48px]
 font-bold
 text-black
 `;
@@ -427,9 +427,10 @@ const AccessoriesItemTW = tw(AccessoriesItemSC)`
 `;
 
 const AccessoriesImageItemSC = styled.div`
-  width: 285px;
-  height: 409px;
+  width: 320px;
+  height: 480px;
   margin-left: 200px;
+
   img {
     width: 100%;
     height: 100%;
@@ -481,7 +482,7 @@ const DescriptionTW = tw.div`
 `
 
 const LifeSTyleNameTW = tw.div`
-text-7xl
+text-[48px]
 font-bold
 text-white
 `
@@ -590,12 +591,12 @@ export const getStaticProps = async ({
       },
       images: [
         {
-          "imgURL": "https://customer-arya.oss-cn-shanghai.aliyuncs.com/BannerImages/1.jpg",
-          "mobileImgURL": "https://customer-arya.oss-cn-shanghai.aliyuncs.com/BannerImages/1mobile.jpg",
+          "imgURL": "https://customer-arya.oss-cn-shanghai.aliyuncs.com/AC24SS-1/AC24SS025/Gray/1.jpg",
+          "mobileImgURL": "https://customer-arya.oss-cn-shanghai.aliyuncs.com/AC24SS-1/AC24SS025/Gray/1.jpg",
           "productSKU": "AC24SS025",
           "name": {
             Chinese: '披肩',
-            English: 'Cardigan',
+            English: 'Stole',
           }
         }
       ]

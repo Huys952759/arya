@@ -29,7 +29,7 @@ export default function HomePge({ products }) {
                                     alt=""
                                     src={product.coverImage}
                                 />
-                                <div className="text-black mt-3 text-2xl">{product.name[language]}</div>
+                                <div className="text-black mt-3 text-xl">{product.name[language]}</div>
                                 {
                                     !product.price.hidden && (
                                         <div className="text-black mt-3 text-2xl font-bold">
