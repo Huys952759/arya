@@ -59,8 +59,8 @@ export default function Home({ IndexConfig }) {
             <div className={isPhone ? 'font-bold pt-[20px] pl-[20px]' : 'font-bold pt-[67px] pl-[50px]'}>
               {IndexConfig.readToWear.name[language]}
             </div>
-            <ReadyImageContainerTW className={isPhone ? '' : 'flex flex-row-reverse'}>
-              <ReadyImage1TW className={isPhone ? 'h-[386px]' : 'h-[900px] ml-[32px]'}>
+            <ReadyImageContainerTW className={isPhone ? 'mt-[20px] px-[20px]' : 'flex flex-row-reverse mt-[50px] px-[50px]'}>
+              <ReadyImage1TW className={isPhone ? 'h-[386px] mb-[20px]' : 'h-[900px] ml-[32px]'}>
                 <Image
                   src={IndexConfig.readToWear.images[0].imgURL}
                   width={750}
@@ -79,8 +79,8 @@ export default function Home({ IndexConfig }) {
                 </Link>
               </ReadyImage1TW>
 
-              <div className={isPhone ? 'flex' : 'flex-1'}>
-                <ReadyImage2TW className={isPhone ? 'w-[241px] h-[160px]' : ''}>
+              <div className={isPhone ? 'flex w-[100%] overflow-x-scroll whitespace-nowrap' : 'flex-1'}>
+                <ReadyImage2TW className={isPhone ? 'w-[241px] h-[160px] shrink-0' : 'h-[434px]'}>
                   <Image
                     src={IndexConfig.readToWear.images[1].imgURL}
                     width={1200}
@@ -99,7 +99,7 @@ export default function Home({ IndexConfig }) {
                   </Link>
                 </ReadyImage2TW>
 
-                <ReadyImage3TW className={isPhone ? 'w-[241px] h-[160px]' : ''}>
+                <ReadyImage3TW className={isPhone ? 'w-[241px] h-[160px] shrink-0 ml-[20px]' : 'h-[434px]'}>
                   <Image
                     src={IndexConfig.readToWear.images[2].imgURL}
                     width={1200}
@@ -261,11 +261,15 @@ export default function Home({ IndexConfig }) {
                 alt="brand"
                 width={24}
                 height={24}
-                src="/Instagram.svg" className=" h-auto" />
+                style={{cursor: 'pointer'}}
+                onClick={() => window.open('https://www.instagram.com/aryacashmere/')}
+                src="/instagram.svg" className=" h-auto" />
               <Image
                 alt="brand"
                 width={24}
                 height={24}
+                style={{cursor: 'pointer'}}
+                onClick={() => {window.open('https://www.facebook.com/profile.php?id=61550338095612')}}
                 src="/facebook.svg" className=" h-auto" />
               <Image
                 alt="brand"
@@ -322,8 +326,6 @@ const ReadyNameTW = tw(ReadyNameSC)`
 const ReadyImageContainerTW = tw.div`
   left-0
   right-0
-  px-12
-  mt-12
   absolute
 `;
 
@@ -338,13 +340,11 @@ const ReadyImage1SC = styled.div`
 `
 
 const ReadyImage1TW = tw(ReadyImage1SC)`
-  mb-8
   relative
   flex-1
 `;
 
 const ReadyImage2SC = styled.div`
-  height: 434px;
 
   img {
   width: 100%;
@@ -361,7 +361,6 @@ mb-[32px]
 `;
 
 const ReadyImage3SC = styled.div`
-  height: 434px;
 
   img {
   width: 100%;
@@ -379,7 +378,7 @@ const ReadyImage3TW = tw(ReadyImage3SC)`
 
 const ReadyIconTW = tw.div`
   absolute
-  bottom-10
+  bottom-[10px]
   right-8
   flex
   flex-col
